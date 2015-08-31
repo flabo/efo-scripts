@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<form>
+			<input type="text" id="member-id" placeholder="会員IDを入力してください。"/>
+			<span id="member-id-alert"></span>
+		</form>
+		<script>
+			$(function() {
+				$('#member-id').on('focus', function(){
+					$('#member-id-alert').text($(this).attr('placeholder'));
+				}).on('blur', function(){
+					$('#member-id-alert').text('');
+				});
+			});
+		</script>
+	</body>
+</html>

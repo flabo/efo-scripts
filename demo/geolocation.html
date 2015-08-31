@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../src/jquery.passwordchecker.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<form>
+			<a id="geolocation">近隣施設のみに絞込む</a>
+			<select id="candidate" name="candidate">
+				<option name="dummy">dummy</option>
+			</select>
+		</form>
+		<script>
+			$(function() {
+				if (navigator.geolocation == undefined) {
+					$("#geolocation").hide();
+				}
+				$("#geolocation").on('click', function(){
+					navigator.geolocation.watchPosition(
+						function(position){
+							$.ajax({
+								type: 'post',
+								url: 'get/candidates/by/location',
+								datatype: 'html'
+							}).done(function(data){
+								$('#nearby-candidate > option').remove();
+								$('#nearby-candidate').append(data);
+							}).fail(function(data){
+								alert('近隣施設の候補が見つかりませんでした。');
+							});
+						}
+					);
+				});
+			});
+		</script>
+	</body>
+</html>

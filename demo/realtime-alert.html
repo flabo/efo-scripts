@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../src/jquery.passwordchecker.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="element"></div>
+		<form>
+			<input type="email" id="email"/>
+			<p id="email-alert"></p>
+		</form>
+		<script>
+			$(function() {
+				$("#email").on('keyup', function(){
+					var string = $(this).val();
+					if (!/^[-._a-zA-Z0-9\/!#$%&'\*+=?^`{|}~]+@[-._a-z0-9]+\.[a-z]{2,6}$/.test(string)) {
+						$('#email-alert').text('正しいメールアドレスを入力してください。')
+					} else {
+						$('#email-alert').text('');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

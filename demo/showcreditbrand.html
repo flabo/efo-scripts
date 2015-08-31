@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../src/jquery.passwordchecker.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="element"></div>
+		<form>
+			<input type="text" id="creditcard"/>
+			<div>
+				<i class="card-logo fa fa-cc-visa"></i>
+				<i class="card-logo fa fa-cc-amex"></i>
+				<i class="card-logo fa fa-cc-jcb"></i>
+				<i class="card-logo fa fa-cc-mastercard"></i>
+			</div>
+		</form>
+		<script>
+			$(function() {
+				$("#creditcard").on('keyup', function(){
+					var getBrand = function (str) {
+						if (!str) return '';
+						if (str.lastIndexOf('5', 0) == 0) return 'mastercard';
+						if (str.lastIndexOf('4', 0) == 0) return 'visa';
+						if (str.lastIndexOf('34', 0) == 0 || str.lastIndexOf('37', 0) == 0) return 'amex';
+						if (/^35([3-8][0-9]|28|29)/.test(str)) return 'jcb';
+						return '';
+					};
+					var brand = getBrand($(this).val());
+					if (brand.length) {
+						$('i.card-logo').hide();
+						$('i.card-logo.fa-cc-'+brand).show();
+					} else {
+						$('i.card-logo').show();
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

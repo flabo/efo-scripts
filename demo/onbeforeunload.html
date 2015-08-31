@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../src/jquery.passwordchecker.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="element"></div>
+		<form>
+			<input type="text" id="creditcard"/>
+			<input type="submit" value="送信"/>
+		</form>
+		<script>
+			var exitBlockFlag = true;
+			window.onbeforeunload = function (p) {
+				var p = p || window.event;
+				if (window==parent && exitBlockFlag) {
+					return p.returnValue = 'フォーム画面から離脱します。よろしいですか？';
+				}
+			}
+			$('input[type=submit]').on('mouseup keyup', function() {
+				// clickの前に発火するmouseup keyupのイベントで離脱ブロックをsuspendする
+				exitBlockFlag=false;
+				setTimeout(function() {
+					exitBlockFlag=true;
+				}, 1000);
+			});
+		</script>
+	</body>
+</html>
