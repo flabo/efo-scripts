@@ -1,0 +1,15 @@
+{
+  "name": "efo-scripts",
+  "version": "1.1.0",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "boilerplate",
+    "jquery-plugin",
+    "jquery-boilerplate"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.4.0"
+  }
+}

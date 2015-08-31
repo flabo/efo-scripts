@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EFO サンプルスクリプト</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../src/jquery.halfwidth.js"></script>
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="element"></div>
+		<form>
+			<input type="text" id="hankaku"/>
+			英数字を全角で入力してください。半角に自動変換されます。
+		</form>
+		<script>
+			$(function() {
+				$('#hankaku').on('keydown', function(){
+					var converter = function(r) {
+						return r.replace(/\u3000/g, ' ').replace(/[！-～]/g, function(r) {
+							return String.fromCharCode(r.charCodeAt(0) - 0xFEE0);
+						});
+					};
+					$(this).val(converter($(this).val()));
+				});
+			});
+		</script>
+	</body>
+</html>
