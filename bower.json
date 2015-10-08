@@ -11,5 +11,8 @@
   "devDependencies": {
     "bootstrap": "~3.3.5",
     "fontawesome": "~4.4.0"
+  },
+  "dependencies": {
+    "zxcvbn": "~3.5.0"
   }
 }
