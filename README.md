@@ -40,7 +40,12 @@ bower install
 grunt serve
 ```
 
-[デモ一覧](http://localhost:9000/demo/)より、各EFOスクリプトのデモが確認できます。
+9000ポートでサーバが立ち上がります。
+デモ一覧(下記URL)より、各EFOスクリプトのデモが確認できます。
+
+```
+http://localhost:9000/demo/
+```
 
 ## ライセンス
 
